@@ -1,0 +1,9 @@
+# Compiled C program (build artifact)
+lock
+
+# macOS
+.DS_Store
+
+# Editor / OS junk
+*.swp
+.Rhistory

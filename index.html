@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escape the Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <header>
+      <h1>ESCAPE THE LAB</h1>
+      <p class="subtitle">Find the 3 clue digits · Decrypt the code · Unlock the door</p>
+    </header>
+
+    <!-- The room scene -->
+    <section id="room">
+      <div id="room-label">PROFESSOR'S LAB · HOUR 0:17</div>
+
+      <!-- Night sky through the window -->
+      <div id="window" onclick="inspect('window')">
+        <span class="moon"></span>
+        <span class="hill back"></span>
+        <span class="hill front"></span>
+        <span class="etch">307</span>
+      </div>
+
+      <!-- Hanging lamp -->
+      <div id="lamp">
+        <span class="cord"></span>
+        <span class="bulb"></span>
+        <span class="glow"></span>
+      </div>
+
+      <!-- Wall signs -->
+      <div id="poster">
+        <strong>DANGER</strong>
+        <span>TESTS IN PROGRESS</span>
+      </div>
+
+      <button id="painting" class="item" onclick="inspect('painting')">
+        <span class="canvas"></span>
+        <span class="tape"></span>
+        <span class="label">PAINTING</span>
+      </button>
+
+      <div id="bookshelf" class="item" onclick="inspect('bookshelf')">
+        <span class="shelf"></span>
+        <span class="shelf"></span>
+        <span class="shelf"></span>
+        <span class="label">BOOKSHELF</span>
+      </div>
+
+      <div id="clock" class="item" onclick="inspect('clock')">
+        <span class="face">
+          <span class="hand hour"></span>
+          <span class="hand minute"></span>
+          <span class="hub"></span>
+        </span>
+        <span class="label">CLOCK</span>
+      </div>
+
+      <div id="laptop" class="item" onclick="inspect('laptop')">
+        <span class="screen"></span>
+        <span class="base"></span>
+        <span class="label">LAPTOP</span>
+      </div>
+
+      <div id="door" class="item locked" onclick="openKeypad('door')">
+        <span class="panel"></span>
+        <span class="handle"></span>
+        <span class="lock-badge">LOCKED</span>
+        <span class="label">EXIT DOOR</span>
+      </div>
+    </section>
+
+    <!-- Narration / feedback (terminal style) -->
+    <section id="log" aria-live="polite">You wake up locked inside the Professor's Lab. Explore the room...</section>
+
+    <!-- Found clues -->
+    <section id="clues">
+      <span class="clues-label">CLUES</span>
+      <span class="slot">?</span>
+      <span class="slot">?</span>
+      <span class="slot">?</span>
+    </section>
+
+    <!-- Door keypad -->
+    <section id="keypad" class="hidden">
+      <div class="keypad-card">
+        <div id="keypad-title">ENTER DOOR CODE</div>
+        <div id="display">- - -</div>
+        <div id="keys">
+          <button onclick="press('1')">1</button>
+          <button onclick="press('2')">2</button>
+          <button onclick="press('3')">3</button>
+          <button onclick="press('4')">4</button>
+          <button onclick="press('5')">5</button>
+          <button onclick="press('6')">6</button>
+          <button onclick="press('7')">7</button>
+          <button onclick="press('8')">8</button>
+          <button onclick="press('9')">9</button>
+          <button onclick="clearEntry()">C</button>
+          <button onclick="press('0')">0</button>
+          <button id="unlock" onclick="submitCode()">UNLOCK</button>
+        </div>
+        <button id="close-keypad" onclick="closeKeypad()">Close</button>
+      </div>
+    </section>
+
+    <!-- Victory screen -->
+    <section id="victory" class="hidden">
+      <h2>YOU ESCAPED!</h2>
+      <p>The lab door swings open. You're free!</p>
+      <button onclick="resetGame()">Play Again</button>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
